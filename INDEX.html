@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delightful Cakes - Shop</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation Bar */
+        .navigation {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 182, 193, 0.8); /* Light pink with transparency */
+            backdrop-filter: blur(10px); /* Blur effect */
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation ul li {
+            margin: 0 20px;
+        }
+
+        .navigation ul li a {
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            color: #d35400; /* Orange on hover */
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 20px; /* Increased padding to account for fixed nav */
+            text-align: center;
+            background:#f8bbd0; 
+            color: white;
+            height: 100vh;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2); /* Dark overlay */
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.6em;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background-color: #d35400;
+            color: white;
+            border-radius: 30px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px); /* Button lift effect */
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 80px 20px;
+            text-align: center;
+            background: #f8bbd0; /* Light pink */
+            color: #333;
+        }
+
+        .about-us h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        .about-us p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            background: #ffffff; /* Light white */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Shop Section */
+        .shop-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('cake-shop-bg.jpg') no-repeat center center; /* Background image */
+            background-size: cover;
+            filter: blur(8px); /* Blurry background effect */
+            z-index: 1;
+            opacity: 0.3; /* Slightly visible background */
+        }
+
+        .shop-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #e74c3c;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Product Pricing List */
+        .pricing-list {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f8bbd0; /* Light pink */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-list li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1em;
+            background-color: #ffffff; /* White background for each item */
+        }
+
+        .pricing-list li:nth-child(odd) {
+            background-color: #f8f9fa; /* Light gray background for alternate items */
+        }
+
+        .pricing-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-list .item-name {
+            font-weight: bold;
+        }
+
+        /* Contact Us Section */
+        .contact-us {
+            padding: 80px 20px;
+            background-color:#f8bbd0; 
+            color: white;
+            text-align: center;
+        }
+
+        .contact-us h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .contact-us p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-us a {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            color: white;
+            font-size: 1.1em;
+            margin: 10px;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-us a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Contact Us Icons */
+        .whatsapp-button {
+            background-color: #25D366;
+        }
+
+        .instagram-button {
+            background-color: #E1306C;
+        }
+
+        .youtube-button {
+            background-color: #FF0000;
+        }
+
+        .facebook-button {
+            background-color: #1877F2;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navigation">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <!-- Removed the logo image -->
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Welcome to Mommy's Bakery</h2>
+        <p>We bake delicious, beautifully crafted cakes for every occasion, made with love and the finest ingredients.</p>
+        <a href="#shop" class="cta-button">Order Now</a>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us" id="about">
+        <h2>About Us</h2>
+        <p>At Delightful Cakes, we are passionate about creating delectable cakes that make your celebrations special. Using only the best ingredients, our cakes are made fresh daily, ensuring the perfect balance of flavor and presentation. We specialize in custom cakes for birthdays, weddings, and events, crafting edible works of art that taste as good as they look.</p>
+    </section>
+
+    <!-- Shop Section with Pricing List -->
+    <section class="shop-section" id="shop">
+        <h2>Our Cake Collection & Pricing</h2>
+        <ul class="pricing-list">
+            <li><span class="item-name">Chocolate Cake</span><span>₹900</span></li>
+            <li><span class="item-name">Chocolate Oreo</span><span>₹900</span></li>
+            <li><span class="item-name">Chocolate Orange</span><span>₹900</span></li>
+            <li><span class="item-name">Chocolate Mocha</span><span>₹1000</span></li>
+            <li><span class="item-name">Chocolate Almond</span><span>₹1000</span></li>
+            <li><span class="item-name">Chocolate Caramel</span><span>₹1000</span></li>
+            <li><span class="item-name">Chocolate Chocochip</span><span>₹1200</span></li>
+            <li><span class="item-name">Chocolate Truffle</span><span>₹1400</span></li>
+            <li><span class="item-name">White Truffle</span><span>₹1400</span></li>
+            <li><span class="item-name">Chocolate Fudge</span><span>₹1500</span></li>
+            <li><span class="item-name">Chocolate KitKat</span><span>₹1500</span></li>
+            <li><span class="item-name">Vanilla</span><span>₹650</span></li>
+            <li><span class="item-name">Pineapple</span><span>₹700</span></li>
+            <li><span class="item-name">Butter Scotch</span><span>₹800</span></li>
+            <li><span class="item-name">White Forest</span><span>₹800</span></li>
+            <li><span class="item-name">Blackforest</span><span>₹800</span></li>
+            <li><span class="item-name">Strawberry</span><span>₹850</span></li>
+            <li><span class="item-name">Kiwi</span><span>₹800</span></li>
+            <li><span class="item-name">Gulkand with Thandai</span><span>₹1000</span></li>
+            <li><span class="item-name">Rasmalai</span><span>₹1200</span></li>
+            <li><span class="item-name">Kesar Badam Kulfi</span><span>₹1200</span></li>
+            <li><span class="item-name">Red Velvet</span><span>₹1000</span></li>
+            <li><span class="item-name">Blue Velvet</span><span>₹1000</span></li>
+        </ul>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us" id="contact">
+        <h2>Contact Us</h2>
+        <p>For orders or inquiries, please reach out to us through the following platforms:</p>
+        <a href="https://wa.me/917702666330" class="whatsapp-button">WhatsApp</a>
+        <a href="https://www.instagram.com/homebaker.24/" class="instagram-button">Instagram</a>
+        <a href="https://www.youtube.com/@mommysbakery" class="youtube-button">YouTube</a>
+        <a href="https://www.facebook.com/homebaker.24/" class="facebook-button">Facebook</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Delightful Cakes. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
